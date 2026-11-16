@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" font-family="'Microsoft YaHei','PingFang SC',Arial,sans-serif">
+  <rect width="1000" height="640" fill="#e8edf3"/>
+
+  <!-- editor toolbar -->
+  <rect x="0" y="0" width="1000" height="146" fill="#f6f8fb" stroke="#d5dee9"/>
+  <text x="26" y="30" font-size="17" font-weight="700" fill="#22384f">简历修改器</text>
+  <text x="26" y="49" font-size="10.5" fill="#8492a3">单文件 · 零依赖 · 离线可用｜点击文字直接改，悬停模块可复制 / 排序 / 删除</text>
+  <g font-size="10.5" fill="#334e68">
+    <rect x="640" y="14" width="72" height="26" rx="5" fill="#0969da"/><text x="654" y="31" fill="#ffffff">预览模式</text>
+    <rect x="718" y="14" width="82" height="26" rx="5" fill="#ffffff" stroke="#c6d2e0"/><text x="726" y="31">下载修改器</text>
+    <rect x="806" y="14" width="96" height="26" rx="5" fill="#ffffff" stroke="#c6d2e0"/><text x="814" y="31">导出简历 HTML</text>
+    <rect x="908" y="14" width="76" height="26" rx="5" fill="#ffffff" stroke="#c6d2e0"/><text x="916" y="31">打印 / PDF</text>
+  </g>
+
+  <!-- global row -->
+  <g font-size="10.5" fill="#5b6b7d">
+    <text x="26" y="72">正文字体</text>
+    <rect x="86" y="59" width="150" height="22" rx="4" fill="#ffffff" stroke="#c6d2e0"/><text x="96" y="74" fill="#334e68">默认（微软雅黑 / 苹方）</text>
+    <text x="252" y="72">字号</text>
+    <line x1="284" y1="70" x2="380" y2="70" stroke="#9fb3c8" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="332" cy="70" r="7" fill="#0969da"/>
+    <text x="390" y="74" fill="#334e68">100%</text>
+    <text x="446" y="72">行距</text>
+    <line x1="478" y1="70" x2="574" y2="70" stroke="#9fb3c8" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="526" cy="70" r="7" fill="#0969da"/>
+    <text x="584" y="74" fill="#334e68">100%</text>
+    <text x="640" y="72">模块</text>
+    <rect x="676" y="59" width="150" height="22" rx="4" fill="#ffffff" stroke="#c6d2e0"/><text x="686" y="74" fill="#334e68">时间线条目（工作 · 实习）</text>
+    <rect x="832" y="59" width="60" height="22" rx="4" fill="#0969da"/><text x="842" y="74" fill="#ffffff">＋ 添加</text>
+  </g>
+
+  <!-- WPS-style inline format row -->
+  <rect x="16" y="94" width="968" height="42" rx="6" fill="#ffffff" stroke="#c6d2e0"/>
+  <text x="30" y="120" font-size="12" font-weight="700" fill="#22384f">文字格式</text>
+  <text x="100" y="120" font-size="10.5" fill="#0969da">已选中「林」 · 改动立即生效</text>
+  <rect x="320" y="104" width="150" height="22" rx="4" fill="#ffffff" stroke="#c6d2e0"/><text x="330" y="119" font-size="10.5" fill="#334e68">保持当前字体</text>
+  <rect x="480" y="104" width="56" height="22" rx="4" fill="#ffffff" stroke="#c6d2e0"/><text x="488" y="119" font-size="10.5" fill="#334e68">24 px</text>
+  <g font-size="12" fill="#22384f">
+    <rect x="552" y="104" width="28" height="22" rx="4" fill="#dbeafe" stroke="#0969da"/><text x="561" y="120" font-weight="700">B</text>
+    <rect x="586" y="104" width="28" height="22" rx="4" fill="#ffffff" stroke="#c6d2e0"/><text x="596" y="120" font-style="italic">I</text>
+    <rect x="620" y="104" width="28" height="22" rx="4" fill="#ffffff" stroke="#c6d2e0"/><text x="629" y="120" text-decoration="underline">U</text>
+    <rect x="658" y="104" width="72" height="22" rx="4" fill="#ffffff" stroke="#e0b4b4"/><text x="668" y="119" font-size="10.5" fill="#c0392b">清除格式</text>
+  </g>
+  <text x="752" y="120" font-size="10.5" fill="#8492a3">拖选任意文字（可只选一个字）→ 即改即生效</text>
+
+  <!-- A4 page -->
+  <rect x="252" y="162" width="496" height="466" fill="#ffffff" stroke="#cbd5e1"/>
+  <rect x="252" y="162" width="150" height="466" fill="#f7f9fc"/>
+  <rect x="298" y="180" width="58" height="72" rx="2" fill="#e3e9f1" stroke="#cbd5e1"/>
+  <circle cx="327" cy="207" r="15" fill="#c2ccd8"/>
+  <path d="M304 240 Q304 220 327 220 Q350 220 350 240 Z" fill="#c2ccd8"/>
+  <text x="327" y="266" font-size="15" font-weight="700" text-anchor="middle" fill="#22384f">林亦舟</text>
+  <text x="327" y="286" font-size="9" text-anchor="middle" fill="#5b6b7d">B 端产品 · 解决方案</text>
+  <line x1="270" y1="300" x2="384" y2="300" stroke="#dbe3ec"/>
+  <g font-size="8.5" fill="#8492a3">
+    <text x="270" y="316">138-0000-0000</text>
+    <text x="270" y="330">hello@example.com</text>
+    <text x="270" y="344">现居上海 · 接受出差</text>
+  </g>
+  <text x="270" y="372" font-size="10" font-weight="700" fill="#22384f">优势标签</text>
+  <g font-size="8" fill="#334e68">
+    <rect x="270" y="380" width="46" height="17" rx="3" fill="#ffffff" stroke="#cbd5e1"/><text x="276" y="392">需求分析</text>
+    <rect x="320" y="380" width="46" height="17" rx="3" fill="#ffffff" stroke="#cbd5e1"/><text x="326" y="392">方案设计</text>
+    <rect x="270" y="401" width="46" height="17" rx="3" fill="#ffffff" stroke="#cbd5e1"/><text x="276" y="413">数据驱动</text>
+    <rect x="320" y="401" width="46" height="17" rx="3" fill="#ffffff" stroke="#cbd5e1"/><text x="326" y="413">AI 应用</text>
+  </g>
+  <text x="270" y="442" font-size="10" font-weight="700" fill="#22384f">专业基础</text>
+  <g font-size="8.5" fill="#5b6b7d"><text x="270" y="458">计算机科学与技术</text><text x="270" y="472">数据结构 · 数据库系统</text></g>
+
+  <!-- right column -->
+  <text x="420" y="190" font-size="8.5" letter-spacing="1" fill="#0969da">B2B PRODUCT · SOLUTION · GROWTH</text>
+  <g font-size="8" fill="#5b6b7d">
+    <rect x="420" y="204" width="308" height="9" rx="3" fill="#e8edf3"/>
+    <rect x="420" y="218" width="286" height="9" rx="3" fill="#e8edf3"/>
+    <rect x="420" y="232" width="270" height="9" rx="3" fill="#e8edf3"/>
+  </g>
+  <g font-size="9" fill="#22384f">
+    <rect x="420" y="256" width="72" height="46" rx="4" fill="#f2f6fb" stroke="#dbe3ec"/><text x="428" y="278" font-size="15" font-weight="700">30%</text><text x="428" y="294" font-size="8" fill="#5b6b7d">流程效率提升</text>
+    <rect x="498" y="256" width="72" height="46" rx="4" fill="#f2f6fb" stroke="#dbe3ec"/><text x="506" y="278" font-size="15" font-weight="700">120</text><text x="506" y="294" font-size="8" fill="#5b6b7d">年度增量收入</text>
+    <rect x="576" y="256" width="72" height="46" rx="4" fill="#f2f6fb" stroke="#dbe3ec"/><text x="584" y="278" font-size="15" font-weight="700">8 个</text><text x="584" y="294" font-size="8" fill="#5b6b7d">按期交付项目</text>
+    <rect x="654" y="256" width="72" height="46" rx="4" fill="#f2f6fb" stroke="#dbe3ec"/><text x="662" y="278" font-size="15" font-weight="700">95%</text><text x="662" y="294" font-size="8" fill="#5b6b7d">客户满意度</text>
+  </g>
+  <text x="420" y="328" font-size="10.5" font-weight="700" fill="#22384f">工作经历</text>
+  <line x1="420" y1="336" x2="726" y2="336" stroke="#dbe3ec"/>
+  <text x="420" y="354" font-size="8" fill="#8492a3">2023.04 — 至今</text>
+  <text x="492" y="354" font-size="9.5" font-weight="700" fill="#22384f">高级产品经理｜示例科技有限公司</text>
+  <g font-size="8" fill="#5b6b7d">
+    <circle cx="496" cy="370" r="2" fill="#0969da"/><rect x="504" y="367" width="214" height="7" rx="3" fill="#e8edf3"/>
+    <circle cx="496" cy="384" r="2" fill="#0969da"/><rect x="504" y="381" width="196" height="7" rx="3" fill="#e8edf3"/>
+    <circle cx="496" cy="398" r="2" fill="#0969da"/><rect x="504" y="395" width="222" height="7" rx="3" fill="#e8edf3"/>
+    <circle cx="496" cy="412" r="2" fill="#0969da"/><rect x="504" y="409" width="182" height="7" rx="3" fill="#e8edf3"/>
+  </g>
+  <text x="420" y="442" font-size="10.5" font-weight="700" fill="#22384f">AI 产品与专项实践</text>
+  <line x1="420" y1="450" x2="726" y2="450" stroke="#dbe3ec"/>
+  <g font-size="8" fill="#5b6b7d">
+    <rect x="420" y="462" width="292" height="7" rx="3" fill="#e8edf3"/>
+    <rect x="420" y="474" width="256" height="7" rx="3" fill="#e8edf3"/>
+    <rect x="420" y="490" width="280" height="7" rx="3" fill="#e8edf3"/>
+    <rect x="420" y="502" width="230" height="7" rx="3" fill="#e8edf3"/>
+  </g>
+  <text x="420" y="536" font-size="10.5" font-weight="700" fill="#22384f">教育背景</text>
+  <line x1="420" y1="544" x2="726" y2="544" stroke="#dbe3ec"/>
+  <rect x="420" y="556" width="300" height="7" rx="3" fill="#e8edf3"/>
+  <rect x="420" y="570" width="244" height="7" rx="3" fill="#e8edf3"/>
+
+  <!-- floating module handle -->
+  <g>
+    <rect x="600" y="336" width="128" height="22" rx="4" fill="#22384f"/>
+    <text x="608" y="351" font-size="9" fill="#ffffff">＋ 空白同款　⧉　↑　↓　✕</text>
+  </g>
+
+  <text x="26" y="620" font-size="11" fill="#8492a3">界面示意图 · 实际功能以 index.html 为准（全部内容均为虚构示例）</text>
+</svg>
