@@ -15,6 +15,63 @@
 3. 直接点击简历中的任意文字修改；点顶部「更换照片」换成自己的证件照。
 4. 定稿后点「**导出简历 HTML**」得到干净的单文件简历，或点「**打印 / 存 PDF**」存成 PDF。
 
+## 复制给 AI 智能体，一键安装并使用
+
+不想自己搬文件、也不想逐字改简历？把下面**整段复制**给你常用的 AI 助手（WorkBuddy / Claude Code / Cursor / Copilot / 任何能读本地文件或执行命令的助手），它会自己完成安装和套版。GitHub 代码块右上角有复制按钮，点一下即可。
+
+```text
+请安装开源技能 resume-to-template，并把我上传的简历转换成可编辑的单文件简历修改器。
+
+来源仓库：https://github.com/lychang1121-ship-it/resume-editor
+技能目录：skills/resume-to-template/
+
+请按以下步骤执行：
+1. 取得仓库内容：优先执行
+   git clone --depth 1 https://github.com/lychang1121-ship-it/resume-editor.git
+   若不能联网或命令不可用，请提示我下载
+   https://github.com/lychang1121-ship-it/resume-editor/archive/refs/heads/main.zip
+   并解压到你可读取的目录，或直接使用我给出的本地文件夹路径。
+2. 安装（按你的助手类型二选一）：
+   - WorkBuddy：把 skills/resume-to-template/ 整个目录复制到
+     Windows: %USERPROFILE%\.workbuddy\skills\resume-to-template\
+     macOS / Linux: ~/.workbuddy/skills/resume-to-template/
+   - 其它助手：无需安装，直接把 skills/resume-to-template/SKILL.md
+     当作本次任务的操作说明阅读，并严格照它执行。
+3. 等我提供简历文件（PDF / DOCX / HTML / Markdown / TXT 或直接粘贴文字）后，
+   严格按 SKILL.md 的工作流处理：
+   用 scripts/extract_resume.py 提取纯文本 → 按 references/schema.md 整理成结构化 JSON
+   → 用 scripts/build_editor.py 注入 assets/editor-template.html
+   → 输出 <姓名>_简历修改器.html。
+   模板优先用仓库根的 index.html（--template），独立安装时用自带快照。
+4. 约束：只搬运原文事实，不编造公司 / 学校 / 数字；全程本地处理，不把我的简历上传联网；
+   生成的文件含真实个人信息，只保存在本机，不要提交到任何公开仓库。
+5. 完成后告诉我输出文件的完整路径，并说明双击后用 Chrome / Edge 打开即可继续改字体、
+   字号、加粗、增删模块、导出 PDF。
+
+若我已附上简历文件，请连续做完第 1–5 步；否则先完成第 1、2 步并提示我上传简历。
+```
+
+> 已经装好 Skill 的 WorkBuddy 用户不用上面这段，上传简历后直接说：
+> **「用这个模板把我的简历改成可编辑版本」** 即可。
+
+<details>
+<summary>不想用智能体：纯命令行一键安装</summary>
+
+```bash
+# macOS / Linux
+git clone --depth 1 https://github.com/lychang1121-ship-it/resume-editor.git /tmp/resume-editor
+cp -r /tmp/resume-editor/skills/resume-to-template ~/.workbuddy/skills/
+```
+
+```powershell
+# Windows PowerShell
+git clone --depth 1 https://github.com/lychang1121-ship-it/resume-editor.git $env:TEMP\resume-editor
+Copy-Item -Recurse "$env:TEMP\resume-editor\skills\resume-to-template" "$env:USERPROFILE\.workbuddy\skills\resume-to-template"
+```
+
+装好后重新开启会话即可生效。
+</details>
+
 ## 在线使用（GitHub Pages）
 
 仓库设为 Public 后：`Settings → Pages → Build and deployment → Deploy from a branch → 选 main / (root) → Save`。约 1 分钟后即可访问：
@@ -51,6 +108,8 @@ https://<你的用户名>.github.io/resume-editor/
 ## 用 WorkBuddy Skill 自动套版（可选）
 
 不想手动搬文字？仓库自带一个 Skill：上传任意简历，自动套进这个版式，并生成**仍可用编辑器继续修改**的 HTML。
+
+> 懒得手动复制目录？直接用上面「[复制给 AI 智能体，一键安装并使用](#复制给-ai-智能体一键安装并使用)」那段提示词，让助手自己装好并跑完。
 
 ### 安装
 
