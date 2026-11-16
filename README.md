@@ -48,6 +48,36 @@ https://<你的用户名>.github.io/resume-editor/
 
 改完后「恢复初始模板」会回到你自己写入的那份内容（初始值取自页面 DOM，不是硬编码）。
 
+## 用 WorkBuddy Skill 自动套版（可选）
+
+不想手动搬文字？仓库自带一个 Skill：上传任意简历，自动套进这个版式，并生成**仍可用编辑器继续修改**的 HTML。
+
+### 安装
+
+把 `skills/resume-to-template/` 整个目录复制到用户级 skills 目录：
+
+- Windows：`C:\Users\<用户名>\.workbuddy\skills\`
+- macOS / Linux：`~/.workbuddy/skills/`
+
+也可以解压单独发布的 `resume-to-template.zip` 到同一目录。复制后重新开启会话即可生效。
+
+### 使用
+
+在 WorkBuddy 里上传简历（PDF / DOCX / HTML / Markdown / TXT），说一句：
+
+> 用这个模板把我的简历改成可编辑版本
+
+Skill 会提取文本 → 把内容整理成结构化 JSON → 注入模板 → 输出 `<姓名>_简历修改器.html`。生成的文件保留完整编辑能力，双击可继续改字体、加粗、增删模块、导出 PDF。
+
+### 设计要点
+
+- 模型只产出内容数据，**绝不改写 50KB 的编辑器代码**；注入由 `scripts/build_editor.py` 完成，模板代码逐字节不变。
+- 只搬运原文事实，不编造公司、学校、数字；指标卡凑不满 4 张就少放。
+- 每份简历生成独立的 localStorage 键，多份简历不会互相覆盖自动保存。
+- 全程本地处理、不联网；生成的文件含真实个人信息，请勿提交到公开仓库（`.gitignore` 已兜底）。
+
+字段规范与工作流见 `skills/resume-to-template/SKILL.md` 和 `references/schema.md`。
+
 ## 快捷键与行为
 
 | 操作 | 说明 |
@@ -62,19 +92,27 @@ https://<你的用户名>.github.io/resume-editor/
 ## 隐私说明
 
 - 全部逻辑在本地运行，没有任何网络请求、统计、字体 CDN 或外部图片依赖。
-- 编辑内容保存在浏览器 `localStorage`（键 `resume-editor-v1`），不会离开本机。
+- 编辑内容保存在浏览器 `localStorage`，不会离开本机。
 - 示例证件照是内嵌 SVG 占位图；「更换照片」会把新照片以 data URI 内嵌进 HTML，**只在你点导出时才写进导出的文件**。
-- 请勿把含真实个人信息的简历、证件照或 PDF 提交到公开仓库；仓库的 `.gitignore` 已对常见简历文件做了兜底忽略。
+- Skill 生成的文件含真实简历，属于本地产物；请勿把含真实个人信息的简历、证件照或 PDF 提交到公开仓库。
 
 ## 目录结构
 
 ```
 resume-editor/
-├── index.html     # 全部内容：样式 + 示例简历 + 编辑器逻辑（单文件）
-├── README.md      # 本说明
-├── LICENSE        # MIT
-├── preview.svg    # 界面示意图
-└── .gitignore     # 防止误提交个人简历 / 照片 / PDF
+├── index.html                  # 全部内容：样式 + 示例简历 + 编辑器逻辑（单文件）
+├── README.md                   # 本说明
+├── LICENSE                     # MIT
+├── preview.svg                 # 界面示意图
+├── .gitignore                  # 防止误提交个人简历 / 照片 / PDF
+└── skills/
+    └── resume-to-template/     # WorkBuddy Skill：任意简历 → 本模板
+        ├── SKILL.md
+        ├── scripts/
+        │   ├── extract_resume.py    # 多格式简历文本提取
+        │   └── build_editor.py      # JSON 注入模板，生成可编辑 HTML
+        ├── references/schema.md     # 内容字段规范与映射规则
+        └── assets/editor-template.html  # 模板快照
 ```
 
 ## 已知限制
@@ -82,6 +120,7 @@ resume-editor/
 - 建议 Chrome / Edge；Safari 与 Firefox 的 `contenteditable` 选区行为略有差异。
 - 在线 HTML 预览器通常无法使用同目录本地文件与 localStorage，请下载到本地打开（GitHub Pages 的 https 源不受此限制）。
 - 编辑状态下会显示 A4 边界虚线与操作条，仅用于辅助，打印 / 导出时不会出现。
+- PDF 简历的文本提取依赖可选的 `pypdf` / `PyPDF2` / `pdfplumber` / `PyMuPDF`；扫描件需先 OCR。
 
 ## 许可证
 

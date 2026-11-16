@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>单文件简历修改器 · Resume Editor</title>
+<style>
+@page{size:A4;margin:0}*{box-sizing:border-box}html,body{margin:0;padding:0;background:#dedede;color:#424242;font-family:var(--ff,"Microsoft YaHei","PingFang SC",Arial,sans-serif);-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:calc(10.2px * var(--fs,1));line-height:calc(1.4 * var(--lh,1))}.toolbar{width:210mm;margin:18px auto 10px;display:flex;justify-content:space-between;align-items:center}.toolbar strong{color:#111;font-size:calc(14px * var(--fs,1))}.toolbar small{display:block;color:#777;font-size:calc(11.5px * var(--fs,1));margin-top:3px}.toolbar button{border:1px solid #bbb;border-radius:5px;background:#fff;color:#333;padding:7px 10px;margin-left:6px;font:inherit;cursor:pointer}.toolbar button.primary{background:#111;color:#fff;border-color:#111}.note{width:210mm;margin:0 auto 12px;padding:8px 12px;background:#f7f7f7;border-left:3px solid #888;color:#555;font-size:calc(10.5px * var(--fs,1))}.page{width:210mm;height:297mm;min-height:297mm;margin:0 auto 30px;background:#fff;display:flex;overflow:hidden;box-shadow:0 8px 28px #00000018}.side{width:32%;background:#f2f2f2;padding:12mm 9mm 10mm 10mm;color:#444}.main{width:68%;padding:14mm 11mm 10mm 10mm}.photo-wrap{text-align:center;margin:0 0 9px}.photo{width:29mm;height:36mm;object-fit:cover;object-position:center top;border:1px solid #c8c8c8;display:inline-block}.side h1{font-size:calc(27px * var(--fs,1));letter-spacing:calc(3px + var(--ls,0px));line-height:calc(1.2 * var(--lh,1));margin:0 0 6px;color:#111;font-weight:600}.side .role{font-size:calc(12.5px * var(--fs,1));line-height:calc(1.5 * var(--lh,1));font-weight:600;color:#333;margin-bottom:12px}.side .meta{font-size:calc(10.4px * var(--fs,1));line-height:calc(1.8 * var(--lh,1));color:#555;border-bottom:1px solid #d1d5d7;padding-bottom:9px;margin-bottom:10px}.side h2,.main h2{font-size:calc(11.5px * var(--fs,1));letter-spacing:calc(1.4px + var(--ls,0px));text-transform:uppercase;color:#111;margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid #bbc4c9}.side p{margin:0 0 5px}.side .chips{line-height:calc(1.9 * var(--lh,1))}.chip{display:inline-block;margin:0 4px 4px 0;padding:2px 6px;background:#fff;border:1px solid #c8c8c8;border-radius:2px;font-size:calc(9px * var(--fs,1))}.main header{margin-bottom:9px}.main .kicker{font-size:calc(12.5px * var(--fs,1));color:#333;font-weight:700;letter-spacing:calc(0.3px + var(--ls,0px));margin-bottom:4px}.main .summary{font-size:calc(11.2px * var(--fs,1));line-height:calc(1.65 * var(--lh,1));margin:0;color:#444}.numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0 14px}.number{border-top:1px solid #888;background:#f7f7f7;padding:6px 7px}.number b{display:block;color:#333;font-size:calc(20px * var(--fs,1));line-height:calc(1.1 * var(--lh,1))}.number b span{font-size:calc(12px * var(--fs,1));margin-left:2px}.number strong{display:block;color:#111;font-size:calc(10.4px * var(--fs,1));margin-top:3px}.number span{display:block;color:#666;font-size:calc(8.6px * var(--fs,1));margin-top:2px}.main h2{font-size:calc(11.5px * var(--fs,1));margin-top:13px}.timeline{display:grid;grid-template-columns:65px 1fr;column-gap:8px;margin-bottom:9px}.when{text-align:right;color:#666;font-size:calc(9.2px * var(--fs,1));line-height:calc(1.35 * var(--lh,1));padding-top:2px}.entry{border-left:1px solid #bfc8cc;padding-left:9px;position:relative}.entry:before{content:"";position:absolute;left:-4px;top:4px;width:6px;height:6px;border-radius:50%;background:#333;border:2px solid white;box-shadow:0 0 0 1px #333}.entry h3{font-size:calc(11.5px * var(--fs,1));color:#111;margin:0 0 2px;font-weight:700}.entry .org{font-size:calc(9.6px * var(--fs,1));color:#666;margin-bottom:4px}.entry ul{padding-left:14px;margin:0}.entry li{margin:0 0 3px;padding-left:1px;font-size:calc(10.2px * var(--fs,1));line-height:calc(1.5 * var(--lh,1))}.entry li:last-child{margin-bottom:0}.entry b{color:#333}.project{margin:8px 0 0;padding-left:10px;border-left:1px solid #bfc8cc}.project h3{font-size:calc(10.5px * var(--fs,1));color:#111;margin:0 0 2px}.project p{font-size:calc(10.2px * var(--fs,1));line-height:calc(1.5 * var(--lh,1));margin:0}.target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:6px}.target{border:1px solid #c8c8c8;border-top:2px solid #555;padding:7px 8px;min-height:45px}.target strong{display:block;color:#111;font-size:calc(10px * var(--fs,1));line-height:calc(1.35 * var(--lh,1))}.target span{display:block;color:#666;font-size:calc(9px * var(--fs,1));line-height:calc(1.4 * var(--lh,1));margin-top:3px}.edu-highlight{display:grid;grid-template-columns:65px 1fr;column-gap:8px;border-left:2px solid #333;padding:7px 0 7px 9px;margin-top:6px}.edu-when{text-align:right;color:#666;font-size:calc(9.2px * var(--fs,1));line-height:calc(1.35 * var(--lh,1));padding-top:2px}.edu-highlight h3{font-size:calc(12px * var(--fs,1));color:#111;margin:0 0 2px;font-weight:700}.edu-highlight .org{font-size:calc(9.3px * var(--fs,1));color:#666;margin-bottom:3px}.edu-highlight .small{font-size:calc(9.5px * var(--fs,1));margin:0}.edu{display:flex;justify-content:space-between;gap:8px;font-size:calc(9.5px * var(--fs,1));margin-bottom:2px}.edu strong{color:#111}.sub{font-size:calc(8.9px * var(--fs,1));color:#666;margin-bottom:4px}.small{font-size:calc(9.2px * var(--fs,1));line-height:calc(1.5 * var(--lh,1));margin:3px 0}.main .muted{color:#666}.edit{outline:2px dashed #888;outline-offset:3px}.foot{width:210mm;margin:-20px auto 20px;text-align:center;color:#666;font-size:calc(10px * var(--fs,1))}@media print{body{background:#fff}.toolbar,.note,.foot{display:none}.page{margin:0;box-shadow:none}.edit{outline:none}}@media(max-width:800px){.toolbar,.note,.page,.foot{width:calc(100% - 20px)}.page{height:auto;min-height:0;overflow:visible}.side{padding:20px 14px;width:34%}.main{padding:20px 14px;width:66%}.numbers{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:1fr}.when{text-align:left;margin-bottom:2px}.entry{margin-bottom:7px}}
+</style>
+<style>@media print{html,body{background:#fff!important}body{font-size:calc(12px * var(--fs,1));line-height:calc(1.3 * var(--lh,1))}.side{padding-top:10mm;padding-bottom:7mm}.main{padding-top:11mm;padding-bottom:7mm}.side h1{font-size:calc(30px * var(--fs,1));margin-bottom:4px}.side .role{font-size:calc(14px * var(--fs,1));line-height:calc(1.35 * var(--lh,1));margin-bottom:8px}.side .meta{font-size:calc(11.5px * var(--fs,1));line-height:calc(1.6 * var(--lh,1));padding-bottom:7px;margin-bottom:7px}.side h2,.main h2{font-size:calc(13px * var(--fs,1));margin:8px 0 4px;padding-bottom:3px}.side p{font-size:calc(11.5px * var(--fs,1));line-height:calc(1.35 * var(--lh,1));margin-bottom:3px}.chip{font-size:calc(10.5px * var(--fs,1));padding:2px 5px;margin-bottom:3px}.main header{margin-bottom:6px}.main .kicker{font-size:calc(14px * var(--fs,1));margin-bottom:2px}.main .summary{font-size:calc(12.5px * var(--fs,1));line-height:calc(1.45 * var(--lh,1))}.numbers{gap:5px;margin:7px 0 9px}.number{padding:5px 6px}.number b{font-size:calc(23px * var(--fs,1))}.number b span{font-size:calc(13px * var(--fs,1))}.number strong{font-size:calc(11.5px * var(--fs,1));margin-top:2px}.number span{font-size:calc(9.8px * var(--fs,1))}.timeline{column-gap:7px;margin-bottom:5px}.when{font-size:calc(10.5px * var(--fs,1))}.entry{padding-left:8px}.entry h3{font-size:calc(13px * var(--fs,1));margin-bottom:1px}.entry .org{font-size:calc(10.5px * var(--fs,1));margin-bottom:2px}.entry li{font-size:calc(11.2px * var(--fs,1));line-height:calc(1.35 * var(--lh,1));margin-bottom:2px}.project{margin-top:5px;padding-left:8px}.project h3{font-size:calc(12px * var(--fs,1));margin-bottom:1px}.project p{font-size:calc(11.2px * var(--fs,1));line-height:calc(1.35 * var(--lh,1))}.edu-highlight{padding:5px 0 5px 8px;margin-top:4px}.edu-when{font-size:calc(10.5px * var(--fs,1))}.edu-highlight h3{font-size:calc(13px * var(--fs,1))}.edu-highlight .org{font-size:calc(10.3px * var(--fs,1));margin-bottom:2px}.edu-highlight .small,.small{font-size:calc(10.5px * var(--fs,1));line-height:calc(1.35 * var(--lh,1));margin:2px 0}}</style>
+<style>
+:root{--ui-bg:#f5f7fa;--ui-line:#d8dee6;--ui-ink:#1f2328;--ui-sub:#5b6672;--ui-brand:#0969da;--ui-danger:#c9362b}
+[hidden]{display:none!important}
+.editor-ui{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;color:var(--ui-ink);-webkit-font-smoothing:antialiased}
+#editor{position:sticky;top:0;z-index:60;background:rgba(245,247,250,.97);border-bottom:1px solid var(--ui-line);padding:10px 16px 9px;box-shadow:0 2px 12px #1f232812;backdrop-filter:blur(8px)}
+.ed-top,.ed-row,.ed-tip,.ed-status{max-width:1180px;margin-left:auto;margin-right:auto}
+.ed-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ed-title{font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+.ed-title small{display:block;font-size:11px;color:var(--ui-sub);font-weight:400;margin-top:2px;letter-spacing:0}
+.ed-btns{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.ed-btns button,.ed-btns label.btn{font:12px/1.2 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;border:1px solid var(--ui-line);background:#fff;color:var(--ui-ink);padding:6px 10px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.ed-btns button:hover,.ed-btns label.btn:hover{background:#eaf0f7;border-color:#b9c6d6}
+.ed-btns button.primary,.mini.primary{background:var(--ui-brand);border-color:var(--ui-brand);color:#fff}
+.ed-btns button.primary:hover,.mini.primary:hover{background:#0757b5}
+.ed-btns button.warn{color:var(--ui-danger)}
+.ed-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:9px;padding-top:9px;border-top:1px dashed var(--ui-line)}
+.fld{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ui-sub);white-space:nowrap}
+.fld select,.fld input[type=text]{font:12px -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;border:1px solid var(--ui-line);border-radius:5px;padding:4px 6px;background:#fff;color:var(--ui-ink);max-width:210px}
+.fld input[type=range]{width:96px;accent-color:var(--ui-brand);cursor:pointer}
+.fld output{font-variant-numeric:tabular-nums;color:var(--ui-ink);min-width:38px;text-align:right;font-size:12px}
+button.mini{font:12px/1.2 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;border:1px solid var(--ui-line);background:#fff;color:var(--ui-ink);padding:5px 9px;border-radius:6px;cursor:pointer}
+button.mini:hover{background:#eaf0f7}
+.ed-tip{font-size:11.5px;color:var(--ui-sub);line-height:1.6;margin-top:8px}
+.ed-status{width:210mm;font-size:12px;color:var(--ui-sub);margin:10px auto 0;padding:0 2px}
+.ed-status.over{color:var(--ui-danger);font-weight:600}
+.mod-bar{position:fixed;z-index:90;display:flex;gap:4px;align-items:center;background:#fff;border:1px solid var(--ui-line);border-radius:7px;box-shadow:0 4px 18px #1f232833;padding:4px 6px;font:11px -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+.mod-bar .mname{color:var(--ui-sub);padding:0 6px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mod-bar button{font:11px -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;border:1px solid var(--ui-line);background:#fff;color:var(--ui-ink);padding:3px 7px;border-radius:5px;cursor:pointer;white-space:nowrap}
+.mod-bar button:hover{background:#eaf0f7}
+.mod-bar button.del{color:var(--ui-danger)}
+#resume h1,#resume h2,#resume h3,#resume b,#resume strong{font-family:var(--hf,var(--ff,"Microsoft YaHei","PingFang SC",Arial,sans-serif))}
+.side .side-block:first-of-type h2{margin-top:0}
+body.editing #resume{height:auto;min-height:297mm;overflow:visible;position:relative}
+body.editing #resume::after{content:"A4 单页边界 · 超出此线的内容打印时会自动分页";position:absolute;top:297mm;left:0;right:0;border-top:1px dashed #e05a4f;color:#c0392b;font:10px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;padding:2px 0 0 6px;pointer-events:none;z-index:5}
+body.editing #resume [data-module]{transition:box-shadow .12s}
+body.editing #resume [data-module]:hover{box-shadow:0 0 0 1px #0969da55;outline:1px dashed #0969da99;outline-offset:1px}
+@media print{
+ .editor-ui,.mod-bar{display:none!important}
+ #resume{height:auto!important;min-height:297mm!important;overflow:visible!important}
+ #resume::after{display:none!important}
+ #resume [data-module]:hover{box-shadow:none!important;outline:none!important}
+}
+@media(max-width:800px){.ed-status{width:calc(100% - 20px)}}
+/* 顶部文字格式栏（WPS 风格） */
+.tf-row{background:#fff;border:1px solid var(--ui-line);border-radius:7px;padding:7px 10px;margin-top:9px;gap:12px}
+.tf-row.armed{border-color:#0969da99;box-shadow:0 0 0 2px #0969da14}
+.tf-state{display:flex;flex-direction:column;gap:2px;min-width:185px;font-size:12px}
+.tf-state b{font-size:12px;color:var(--ui-ink)}
+#selInfo{font-size:11px;color:var(--ui-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:270px}
+.tf-row.armed #selInfo{color:var(--ui-brand)}
+.fmt-btns{gap:4px}
+button.fmt-btn{width:29px;height:26px;padding:0;font:14px/1 Georgia,serif;border:1px solid var(--ui-line);background:#fff;color:var(--ui-ink);border-radius:5px;cursor:pointer}
+button.fmt-btn:hover:not(:disabled){background:#eaf0f7}
+button.fmt-btn.active{background:#dbeafe;border-color:var(--ui-brand);color:#0757b5}
+.tf-row [disabled]{opacity:.45;cursor:not-allowed}
+.mini.warn{color:var(--ui-danger)}
+.sb-unit{color:var(--ui-sub);font-size:11px}
+.fmt-panel{position:fixed;right:18px;top:132px;z-index:85;width:300px;max-height:62vh;overflow:auto;background:#fff;border:1px solid var(--ui-line);border-radius:9px;box-shadow:0 8px 30px #1f232833;padding:10px 12px;font:12px -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+.fp-head{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--ui-line)}
+.fp-head button{border:0;background:none;font-size:17px;line-height:1;cursor:pointer;color:var(--ui-sub)}
+.fp-row{display:flex;align-items:center;gap:6px;padding:7px 0;border-bottom:1px dashed #e6eaef}
+.fp-info{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fp-row button{font:11px -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;border:1px solid var(--ui-line);background:#fff;color:var(--ui-ink);border-radius:4px;padding:2px 6px;cursor:pointer;white-space:nowrap}
+.fp-row button:hover{background:#eaf0f7}
+.fp-tip,.fp-empty{font-size:11px;color:var(--ui-sub);line-height:1.65;margin-top:8px}
+body.editing #resume span.local-fmt:hover{outline:1px dotted #0969daaa;outline-offset:1px}
+@media print{.fmt-panel{display:none!important}#resume span.local-fmt:hover{outline:none!important}}
+</style>
+</head>
+<body class="editing">
+
+<div class="editor-ui" id="editor">
+  <div class="ed-top">
+    <div class="ed-title">简历修改器<small>单文件 · 零依赖 · 离线可用｜点击文字直接改，悬停模块可复制 / 排序 / 删除</small></div>
+    <div class="ed-btns">
+      <button id="toggleEdit" class="primary">预览模式</button>
+      <button id="downloadEditor">下载修改器</button>
+      <button id="exportClean">导出简历 HTML</button>
+      <button id="printBtn">打印 / 存 PDF</button>
+      <button id="fmtBtn">局部格式 (0)</button>
+      <label class="btn">更换照片<input type="file" id="photoFile" accept="image/*" hidden></label>
+      <button id="resetBtn" class="warn">恢复初始模板</button>
+    </div>
+  </div>
+  <div class="ed-row">
+    <div class="fld"><span>正文字体</span><select id="fontSel"></select><input type="text" id="fontCustom" placeholder="输入字体名，如 思源黑体" hidden></div>
+    <div class="fld"><span>标题字体</span><select id="headSel"></select></div>
+    <div class="fld"><span>字号</span><input type="range" id="fs" min="0.75" max="1.35" step="0.05" value="1"><output id="fsOut">100%</output></div>
+    <div class="fld"><span>行距</span><input type="range" id="lh" min="0.85" max="1.4" step="0.05" value="1"><output id="lhOut">100%</output></div>
+    <div class="fld"><span>字距</span><input type="range" id="ls" min="-0.5" max="1.5" step="0.1" value="0"><output id="lsOut">0.0px</output></div>
+    <button id="resetType" class="mini">重置排版</button>
+  </div>
+  <div class="ed-row">
+    <div class="fld"><span>添加模块</span><select id="modSel"></select><button id="addMod" class="mini primary">＋ 添加</button></div>
+    <div class="ed-tip" style="margin:0;border:0;padding:0">悬停模块 →「空白同款」复制版式并清空文字，「完整副本」连内容一起复制；↑↓ 调整顺序，✕ 删除。改动自动保存在本机浏览器中。</div>
+    <div class="ed-tip" style="margin:6px 0 0;border:0;padding:0"><b>逐字改格式（WPS 风格）</b>：拖选简历中任意文字（可只选一个字）→ 下方「文字格式」行会显示选中内容并自动填入当前字体/字号，改动即刻生效；B / I / U 可加粗、斜体、下划线（也支持 Ctrl+B/I/U）。局部设置优先于上方全局设置，「局部格式」面板可查看、定位、清除每一处。</div>
+  </div>
+  <div class="ed-row tf-row" id="fmtRow">
+    <div class="tf-state"><b>文字格式</b><span id="selInfo">未选中文字 · 先在简历中拖选（可只选一个字）</span></div>
+    <div class="fld"><span>字体</span><select id="txtFont" disabled></select><input type="text" id="txtCustom" placeholder="自定义字体名" hidden></div>
+    <div class="fld"><span>字号</span><input type="number" id="txtSize" min="6" max="72" step="0.5" placeholder="—" disabled><span class="sb-unit">px</span></div>
+    <div class="fld fmt-btns">
+      <button class="fmt-btn" id="btnBold" title="加粗（Ctrl+B）" disabled><b>B</b></button>
+      <button class="fmt-btn" id="btnItalic" title="斜体（Ctrl+I）" disabled><i>I</i></button>
+      <button class="fmt-btn" id="btnUnderline" title="下划线（Ctrl+U）" disabled><u>U</u></button>
+      <button class="mini warn" id="btnClearFmt" disabled>清除格式</button>
+    </div>
+  </div>
+</div>
+<div class="editor-ui ed-status" id="status">就绪</div>
+<main class="page" id="resume" contenteditable="true" spellcheck="false">
+<aside class="side">
+<div class="photo-wrap"><img class="photo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27290%27%20height%3D%27360%27%20viewBox%3D%270%200%20290%20360%27%3E%3Crect%20width%3D%27290%27%20height%3D%27360%27%20fill%3D%27%23edf1f5%27%2F%3E%3Ccircle%20cx%3D%27145%27%20cy%3D%27128%27%20r%3D%2754%27%20fill%3D%27%23c2ccd8%27%2F%3E%3Cpath%20d%3D%27M40%20300%20Q40%20205%20145%20205%20Q250%20205%20250%20300%20Z%27%20fill%3D%27%23c2ccd8%27%2F%3E%3Ctext%20x%3D%27145%27%20y%3D%27340%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%2Csans-serif%27%20font-size%3D%2719%27%20letter-spacing%3D%273%27%20fill%3D%27%237d8b9c%27%3EPHOTO%3C%2Ftext%3E%3C%2Fsvg%3E" alt="证件照占位图"></div><h1>林亦舟</h1><div class="role">B 端产品<br>解决方案与增长</div>
+<div class="meta">138-0000-0000<br>hello@example.com<br>现居上海<br>接受短期出差</div>
+<section class="side-block" data-module="sideblock" data-label="侧栏分区"><h2>优势标签</h2><div class="chips"><span class="chip" data-module="chip" data-label="优势标签">需求分析</span><span class="chip" data-module="chip" data-label="优势标签">方案设计</span><span class="chip" data-module="chip" data-label="优势标签">跨团队协作</span><span class="chip" data-module="chip" data-label="优势标签">数据驱动</span><span class="chip" data-module="chip" data-label="优势标签">B 端产品</span><span class="chip" data-module="chip" data-label="优势标签">客户经营</span><span class="chip" data-module="chip" data-label="优势标签">AI 应用</span><span class="chip" data-module="chip" data-label="优势标签">项目交付</span></div>
+</section><section class="side-block" data-module="sideblock" data-label="侧栏分区"><h2>专业基础</h2><p>计算机科学与技术<br>数据结构 · 数据库系统<br>统计学 · Python</p>
+</section><section class="side-block" data-module="sideblock" data-label="侧栏分区"><h2>工具与语言</h2><p>产品：Figma · Axure · Jira<br>数据：SQL · Excel · BI 看板<br>开发：Python · HTML / CSS<br>英语：CET-6 · 可作工作语言</p>
+</section><section class="side-block" data-module="sideblock" data-label="侧栏分区"><h2>求职方向</h2><p>B 端产品 / 行业解决方案<br>产品经理 · 售前 · 客户成功<br>上海，接受短期出差</p>
+</section></aside>
+<section class="main">
+<header><div class="kicker">B2B PRODUCT · SOLUTION · GROWTH</div><p class="summary">这是一份可直接修改的示例简历：</p><p class="summary">5 年 B 端产品与解决方案经验，负责从需求调研、方案设计到交付复盘的全流程，熟悉 SaaS 与 AI 应用在行业客户中的落地；习惯用数据定位问题，协调研发、销售与交付多方推进项目。以下姓名、公司、数字均为虚构示例，请替换成自己的真实经历。</p></header>
+<div class="numbers"><div class="number" data-module="number" data-label="数据指标卡片"><b>30<span>%</span></b><strong>流程效率提升</strong><span>上线周期由 6 周缩短至 4 周</span></div><div class="number" data-module="number" data-label="数据指标卡片"><b>120<span>万元</span></b><strong>年度增量收入</strong><span>负责产品线的示例数据</span></div><div class="number" data-module="number" data-label="数据指标卡片"><b>8<span>个</span></b><strong>按期交付项目</strong><span>覆盖 3 个行业客户</span></div><div class="number" data-module="number" data-label="数据指标卡片"><b>95<span>%</span></b><strong>客户满意度</strong><span>年度回访示例数据</span></div></div>
+<h2 data-module="section" data-label="章节标题"><br></h2><h2 data-module="section" data-label="章节标题">工作经历</h2>
+<div class="timeline" data-module="timeline" data-label="时间线 / 工作·实习条目"><div class="when">2023.04<br>至今</div><div class="entry"><h3>高级产品经理｜示例科技有限公司</h3><div class="org">企业服务事业部｜B 端 SaaS 产品线</div><ul><li><b>需求与规划：</b>走访 30 家以上客户，梳理高频业务场景，主导季度路线图与版本优先级排序。</li><li><b>方案设计：</b>输出行业解决方案包，统一售前材料与演示脚本，供销售侧直接复用。</li><li><b>项目推进：</b>协调研发、交付与客户成功团队，推动 <b>8 个项目</b>按期上线并完成验收。</li><li><b>数据结果：</b>重构客户开通流程，把平均上线周期由 <b>6 周缩短至 4 周</b>。</li><li><b>AI 应用：</b>引入智能问答与文档助手，减少一线重复答疑与材料整理工作量。</li></ul></div></div>
+<h2 data-module="section" data-label="章节标题">AI 产品与专项实践</h2>
+<div class="project" data-module="project" data-label="项目条目"><h3>企业智能知识库助手</h3><p>面向售后场景搭建文档检索与问答原型，完成语料整理、效果评测与交互迭代，形成可演示的产品 Demo 与评估报告。</p></div>
+<div class="project" data-module="project" data-label="项目条目"><h3>经营数据看板</h3><p>定义核心指标口径并搭建 BI 看板，覆盖线索、签约、交付与续费环节，支撑区域周会与季度复盘。</p></div>
+<h2 data-module="section" data-label="章节标题">教育背景</h2><div class="edu-highlight" data-module="edu" data-label="教育条目"><div class="edu-when">2017.09<br>2021.06</div><div><h3>示例大学｜计算机科学与技术 · 本科</h3><div class="org">信息科学与工程学院</div><div class="small">核心课程：数据结构、数据库系统、概率论｜CET-6</div></div></div><h2 data-module="section" data-label="章节标题">项目与实习</h2>
+
+<div class="timeline" data-module="timeline" data-label="时间线 / 工作·实习条目"><div class="when">2021.07<br>2023.03</div><div class="entry"><h3>产品专员｜示例网络科技</h3><div class="small">负责后台权限与报表模块的需求文档、验收用例与客户培训，参与 4 次版本发布。</div></div></div>
+<div class="timeline" data-module="timeline" data-label="时间线 / 工作·实习条目"><div class="when">2020.07<br>2020.09</div><div class="entry"><h3>用户研究实习生｜示例咨询</h3><div class="small">完成 5 款协同办公产品的竞品横评，输出功能对比矩阵与改进建议。</div></div></div>
+</section>
+</main>
+
+<div class="editor-ui fmt-panel" id="fmtPanel" hidden>
+  <div class="fp-head"><span>局部格式清单 · <span id="fmtCount">0</span> 处</span><button id="fmtClose" title="关闭">×</button></div>
+  <div id="fmtList"></div>
+  <div class="fp-tip">点「定位」可选中该处文字继续调整；点「清除」恢复跟随全局字体。局部字号为固定 px，不受上方全局滑块影响；加粗等样式一并记录。</div>
+</div>
+
+<div class="editor-ui mod-bar" id="modbar" hidden>
+  <span class="mname" id="modname">模块</span>
+  <button data-act="blank" title="复制版式，文字替换为占位">＋ 空白同款</button>
+  <button data-act="copy" title="连同文字一起复制">⧉ 完整副本</button>
+  <button data-act="up" title="上移">↑</button>
+  <button data-act="down" title="下移">↓</button>
+  <button data-act="del" class="del" title="删除该模块">✕</button>
+</div>
+
+<script>
+
+(function(){
+'use strict';
+var R=document.getElementById('resume'), root=document.documentElement;
+var KEY='resume-editor-v1';
+var INITIAL=R.innerHTML;
+function $(id){return document.getElementById(id);}
+var bar=$('modbar'), barName=$('modname'), status=$('status');
+
+/* ---------- 字体 ---------- */
+var FONTS=[
+ ['默认（微软雅黑 / 苹方）','"Microsoft YaHei","PingFang SC",Arial,sans-serif'],
+ ['微软雅黑','"Microsoft YaHei",sans-serif'],
+ ['苹方 PingFang SC','"PingFang SC","Microsoft YaHei",sans-serif'],
+ ['思源黑体 / Noto Sans SC','"Source Han Sans SC","Noto Sans SC","Microsoft YaHei",sans-serif'],
+ ['思源宋体 / Noto Serif SC','"Source Han Serif SC","Noto Serif SC","SimSun",serif'],
+ ['黑体 SimHei','"SimHei","Microsoft YaHei",sans-serif'],
+ ['宋体 SimSun','"SimSun","Songti SC",serif'],
+ ['等线 DengXian','"DengXian","Microsoft YaHei",sans-serif'],
+ ['楷体 KaiTi','"KaiTi","Kaiti SC",serif'],
+ ['Arial / Helvetica','Arial,Helvetica,sans-serif'],
+ ['Calibri','Calibri,"Microsoft YaHei",sans-serif'],
+ ['Times New Roman','"Times New Roman","SimSun",serif'],
+ ['Georgia','Georgia,"SimSun",serif'],
+ ['自定义…','__custom__']
+];
+var fontSel=$('fontSel'), headSel=$('headSel'), fontCustom=$('fontCustom');
+FONTS.forEach(function(f,i){
+ fontSel.add(new Option(f[0],f[1]));
+ if(i===0) headSel.add(new Option('同正文',''));
+ else if(f[1]!=='__custom__') headSel.add(new Option(f[0],f[1]));
+});
+function quoteFont(t){
+ return t.split(',').map(function(x){
+  x=x.trim();
+  return (/^["']/.test(x)||/^[A-Za-z0-9\- ]+$/.test(x))?x:'"'+x+'"';
+ }).join(',');
+}
+var DEFAULT_FF=FONTS[0][1];
+function fontValue(){
+ var v=fontSel.value;
+ if(v==='__custom__'){
+  var t=fontCustom.value.trim();
+  return t?quoteFont(t):DEFAULT_FF;
+ }
+ return v||DEFAULT_FF;
+}
+var st={fs:1,lh:1,ls:0};
+var saveTimer=null,lastSaved='';
+function pad(n){return n<10?'0'+n:''+n;}
+function banner(msg){
+ status.textContent=msg;
+ setTimeout(checkOverflow,2600);
+}
+function checkOverflow(){
+ var a4=297/25.4*96;
+ var pages=R.scrollHeight/a4;
+ var over=pages>1.03;
+ var msg='自动保存已开启 · 内容约 '+pages.toFixed(2)+' 页（A4）';
+ if(over) msg+=' · ⚠ 已超出单页，建议调小字号 / 行距或删减条目';
+ msg+=' · 上次保存 '+(lastSaved||'—');
+ status.textContent=msg;
+ status.classList.toggle('over',over);
+}
+function apply(){
+ var ff=fontValue(), hv=headSel.value;
+ root.style.setProperty('--ff',ff);
+ root.style.setProperty('--hf',hv||ff);
+ root.style.setProperty('--fs',String(st.fs));
+ root.style.setProperty('--lh',String(st.lh));
+ root.style.setProperty('--ls',st.ls+'px');
+ $('fsOut').textContent=Math.round(st.fs*100)+'%';
+ $('lhOut').textContent=Math.round(st.lh*100)+'%';
+ $('lsOut').textContent=(st.ls>0?'+':'')+st.ls.toFixed(1)+'px';
+ checkOverflow();
+ scheduleSave();
+}
+function saveNow(){
+ try{refreshFmtPanel();}catch(e){}
+ try{
+  localStorage.setItem(KEY,JSON.stringify({
+   html:R.innerHTML,ff:fontSel.value,fct:fontCustom.value,hf:headSel.value,
+   fs:st.fs,lh:st.lh,ls:st.ls,t:Date.now()
+  }));
+  var d=new Date();
+  lastSaved=pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+ }catch(e){}
+ checkOverflow();
+}
+function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(saveNow,600);}
+fontSel.addEventListener('change',function(){
+ fontCustom.hidden=(fontSel.value!=='__custom__');
+ if(!fontCustom.hidden) fontCustom.focus();
+ apply();
+});
+fontCustom.addEventListener('input',apply);
+headSel.addEventListener('change',apply);
+['fs','lh','ls'].forEach(function(k){
+ $(k).addEventListener('input',function(e){st[k]=parseFloat(e.target.value);apply();});
+});
+$('resetType').onclick=function(){
+ st={fs:1,lh:1,ls:0};
+ $('fs').value=1;$('lh').value=1;$('ls').value=0;
+ apply();banner('排版参数已恢复默认值。');
+};
+
+/* ---------- 模块模板 ---------- */
+var T={
+ timeline:'<div class="timeline" data-module="timeline" data-label="时间线 / 工作·实习条目"><div class="when">YYYY.MM<br>YYYY.MM</div><div class="entry"><h3>职位 / 项目名称</h3><div class="org">公司 · 部门 / 地点</div><ul><li><b>职责：</b>点击编辑内容，描述动作与结果，尽量量化。</li><li><b>成果：</b>点击编辑内容。</li></ul></div></div>',
+ project:'<div class="project" data-module="project" data-label="项目条目"><h3>项目名称</h3><p>点击编辑内容：说明背景、你的动作与结果。</p></div>',
+ number:'<div class="number" data-module="number" data-label="数据指标卡片"><b>0<span>单位</span></b><strong>指标名称</strong><span>补充说明</span></div>',
+ chip:'<span class="chip" data-module="chip" data-label="优势标签">新标签</span>',
+ sideblock:'<section class="side-block" data-module="sideblock" data-label="侧栏分区"><h2>新分区</h2><p>点击编辑内容</p></section>',
+ section:'<h2 data-module="section" data-label="章节标题">新章节</h2>',
+ edu:'<div class="edu-highlight" data-module="edu" data-label="教育条目"><div class="edu-when">YYYY.MM<br>YYYY.MM</div><div><h3>学校｜专业 · 学历</h3><div class="org">学院 / 说明</div><div class="small">核心课程 / 补充信息</div></div></div>'
+};
+T.sectionTimeline=T.section+T.timeline;
+T.sectionProject=T.section+T.project;
+var OPTS=[
+ ['timeline','时间线条目（工作 / 实习）'],
+ ['project','项目条目（AI 实践等）'],
+ ['edu','教育条目'],
+ ['number','数据指标卡片'],
+ ['chip','优势标签'],
+ ['sideblock','侧栏分区（标题＋段落）'],
+ ['section','章节标题'],
+ ['sectionTimeline','整块：章节＋时间线条目'],
+ ['sectionProject','整块：章节＋项目条目']
+];
+var modSel=$('modSel');
+OPTS.forEach(function(o){modSel.add(new Option(o[1],o[0]));});
+function last(sel){var a=document.querySelectorAll(sel);return a.length?a[a.length-1]:null;}
+function containerFor(type){
+ var q=function(s){return document.querySelector(s);};
+ if(type==='chip')return{parent:q('#resume .chips'),before:null};
+ if(type==='sideblock')return{parent:q('#resume .side'),before:null};
+ if(type==='number')return{parent:q('#resume .numbers'),before:null};
+ if(type==='sectionTimeline'||type==='sectionProject')return{parent:q('#resume .main'),before:null};
+ var a=type==='timeline'?last('#resume .timeline'):type==='project'?last('#resume .project'):type==='edu'?last('#resume .edu-highlight'):last('#resume .main h2');
+ if(a)return{parent:a.parentNode,before:a.nextSibling};
+ return{parent:q('#resume .main'),before:null};
+}
+function blankText(node){
+ var w=document.createTreeWalker(node,NodeFilter.SHOW_TEXT),list=[],n;
+ while(w.nextNode())list.push(w.currentNode);
+ list.forEach(function(t){
+  if(!t.nodeValue.trim())return;
+  var p=t.parentElement,tag=p.tagName.toLowerCase(),cls=p.className||'';
+  var txt=/^(h1|h2|h3|b|strong)$/.test(tag)?'标题':'点击编辑内容';
+  if(cls.indexOf('when')>=0)txt='时间';
+  else if(cls.indexOf('org')>=0)txt='单位 / 说明';
+  else if(cls.indexOf('chip')>=0)txt='新标签';
+  else if(tag==='span'&&tag!=='b')txt='说明';
+  t.nodeValue=txt;
+ });
+}
+function moveModule(m,dir){
+ var sib=dir<0?m.previousElementSibling:m.nextElementSibling;
+ while(sib&&!sib.hasAttribute('data-module')){
+  sib=dir<0?sib.previousElementSibling:sib.nextElementSibling;
+ }
+ if(!sib)return false;
+ if(dir<0)m.parentNode.insertBefore(m,sib);
+ else m.parentNode.insertBefore(sib,m);
+ return true;
+}
+var current=null,hideTimer=null,editing=true;
+function showBar(el){
+ current=el;
+ bar.hidden=false;
+ barName.textContent=el.getAttribute('data-label')||'模块';
+ var r=el.getBoundingClientRect(),bw=bar.offsetWidth,bh=bar.offsetHeight;
+ var left=Math.min(Math.max(8,r.right-bw),window.innerWidth-bw-8);
+ var top=r.top-bh-4;
+ if(top<4)top=Math.min(r.top+2,window.innerHeight-bh-8);
+ bar.style.left=left+'px';bar.style.top=top+'px';
+}
+function afterChange(node){
+ saveNow();
+ if(node&&editing)showBar(node);
+}
+function duplicate(m,blank){
+ var c=m.cloneNode(true);
+ if(blank)blankText(c);
+ m.parentNode.insertBefore(c,m.nextSibling);
+ afterChange(c);
+}
+function addModule(type){
+ var html=T[type];if(!html)return;
+ var t=document.createElement('template');t.innerHTML=html;
+ var nodes=Array.prototype.slice.call(t.content.children);
+ var spot=containerFor(type);
+ if(!spot.parent)spot={parent:document.querySelector('#resume .main'),before:null};
+ nodes.forEach(function(n){spot.parent.insertBefore(n,spot.before);});
+ afterChange(nodes[0]);
+}
+$('addMod').onclick=function(){addModule(modSel.value);};
+R.addEventListener('mousedown',function(){spanLockUntil=0;lastSpans=[];});
+R.addEventListener('mousemove',function(e){
+ if(!editing)return;
+ var m=e.target&&e.target.closest?e.target.closest('[data-module]'):null;
+ if(m)showBar(m);
+});
+R.addEventListener('mouseleave',function(){
+ hideTimer=setTimeout(function(){
+  if(!bar.matches(':hover')){bar.hidden=true;current=null;}
+ },300);
+});
+bar.addEventListener('mouseenter',function(){clearTimeout(hideTimer);});
+bar.addEventListener('mouseleave',function(){bar.hidden=true;current=null;});
+bar.addEventListener('mousedown',function(e){if(e.target.closest('button'))e.preventDefault();});
+bar.addEventListener('click',function(e){
+ var b=e.target.closest('button');
+ if(!b||!current)return;
+ var act=b.getAttribute('data-act'),m=current;
+ if(act==='blank'||act==='copy')duplicate(m,act==='blank');
+ else if(act==='up'||act==='down'){
+  if(moveModule(m,act==='up'?-1:1))afterChange(m);
+ }else if(act==='del'){
+  if(confirm('确定删除这个「'+(m.getAttribute('data-label')||'模块')+'」吗？')){
+   m.remove();bar.hidden=true;current=null;saveNow();
+  }
+ }
+});
+window.addEventListener('scroll',function(){bar.hidden=true;},{passive:true});
+window.addEventListener('resize',checkOverflow);
+R.addEventListener('input',function(){scheduleSave();checkOverflow();});
+
+/* ---------- 顶部文字格式栏（WPS 风格：选中即改） ---------- */
+var fmtRow=$('fmtRow'),fmtPanel=$('fmtPanel');
+var txtFont=$('txtFont'),txtCustom=$('txtCustom'),txtSize=$('txtSize');
+var btnBold=$('btnBold'),btnItalic=$('btnItalic'),btnUnderline=$('btnUnderline'),btnClearFmt=$('btnClearFmt');
+var savedRange=null,lastSpans=[],spanLockUntil=0;
+txtFont.add(new Option('保持当前字体','__keep__'));
+FONTS.forEach(function(f){txtFont.add(new Option(f[0],f[1]));});
+function fmtControls(){return [txtFont,txtCustom,txtSize,btnBold,btnItalic,btnUnderline,btnClearFmt];}
+function setFmtEnabled(on){
+ fmtControls().forEach(function(el){el.disabled=!on;});
+ fmtRow.classList.toggle('armed',!!on);
+}
+function fmtBusy(){
+ return fmtRow.contains(document.activeElement)||fmtRow.matches(':hover')||fmtPanel.matches(':hover');
+}
+function validRange(){
+ var s=window.getSelection();
+ if(!s||!s.rangeCount||s.isCollapsed)return null;
+ var r=s.getRangeAt(0);
+ return R.contains(r.commonAncestorContainer)?r:null;
+}
+function exactSpanOf(r){
+ var hit=null;
+ Array.prototype.some.call(R.querySelectorAll('span.local-fmt'),function(sp){
+  var t=document.createRange();t.selectNodeContents(sp);
+  if(r.compareBoundaryPoints(Range.START_TO_START,t)===0&&r.compareBoundaryPoints(Range.END_TO_END,t)===0){hit=sp;return true;}
+  return false;
+ });
+ return hit;
+}
+function spansOwnRange(r){
+ if(!lastSpans.length)return false;
+ var a=r.startContainer,b=r.endContainer;
+ return lastSpans.some(function(sp){return sp===a||sp.contains(a);})&&lastSpans.some(function(sp){return sp===b||sp.contains(b);});
+}
+function nodeOf(r){return r.startContainer.nodeType===3?r.startContainer.parentElement:r.startContainer;}
+function baseNode(){
+ if(lastSpans.length&&lastSpans[0].isConnected)return lastSpans[0];
+ if(savedRange)return nodeOf(savedRange);
+ return null;
+}
+function syncFmtControls(){
+ var n=baseNode();if(!n)return;
+ var cs=getComputedStyle(n);
+ var v=parseFloat(cs.fontSize);
+ txtSize.value=isNaN(v)?'':Math.round(v*10)/10;
+ var inlineFF=lastSpans.length?lastSpans[0].style.fontFamily:'';
+ var wanted=(inlineFF?inlineFF.split(',')[0]:cs.fontFamily.split(',')[0]).replace(/["']/g,'').trim();
+ var matched=false;
+ for(var i=0;i<txtFont.options.length;i++){
+  var ov=txtFont.options[i].value;
+  if(ov==='__keep__'||ov==='__custom__')continue;
+  var firstName=ov.split(',')[0].replace(/["']/g,'').trim();
+  if(firstName.toLowerCase()===wanted.toLowerCase()){txtFont.value=ov;matched=true;break;}
+ }
+ if(!matched)txtFont.value='__keep__';
+ txtCustom.hidden=(txtFont.value!=='__custom__');
+ var w=cs.fontWeight;
+ btnBold.classList.toggle('active',w==='bold'||w==='bolder'||parseInt(w,10)>=700);
+ btnItalic.classList.toggle('active',cs.fontStyle==='italic');
+ var dec=cs.textDecorationLine||cs.textDecoration||'';
+ btnUnderline.classList.toggle('active',dec.indexOf('underline')>=0);
+}
+function updateSelInfo(r){
+ var t=r?r.toString().trim().replace(/\s+/g,' '):'';
+ $('selInfo').textContent=t?('已选中「'+(t.length>14?t.slice(0,14)+'…':t)+'」 · 改动立即生效'):'未选中文字 · 先在简历中拖选（可只选一个字）';
+}
+function resetSelInfo(){
+ setFmtEnabled(false);
+ $('selInfo').textContent='未选中文字 · 先在简历中拖选（可只选一个字）';
+}
+document.addEventListener('selectionchange',function(){
+ setTimeout(function(){
+  var r=validRange();
+  if(r&&Date.now()<spanLockUntil&&lastSpans.length&&lastSpans.every(function(sp){return sp.isConnected;})){
+   savedRange=r.cloneRange();setFmtEnabled(true);updateSelInfo(r);return;
+  }
+  if(r){
+   savedRange=r.cloneRange();
+   if(!spansOwnRange(r)){
+    var ex=exactSpanOf(r);
+    lastSpans=ex?[ex]:[];
+   }
+   setFmtEnabled(true);syncFmtControls();updateSelInfo(r);
+  }else if(!fmtBusy()&&!(Date.now()<spanLockUntil&&lastSpans.length)){
+   resetSelInfo();
+  }
+ },0);
+});
+function wrapSelection(styles){
+ if(!savedRange)return[];
+ var s=window.getSelection();
+ try{s.removeAllRanges();s.addRange(savedRange);}catch(e){return[];}
+ var r=s.getRangeAt(0);
+ if(!R.contains(r.commonAncestorContainer))return[];
+ var sc=r.startContainer,so=r.startOffset,ec=r.endContainer,eo=r.endOffset;
+ var root=r.commonAncestorContainer.nodeType===1?r.commonAncestorContainer:r.commonAncestorContainer.parentNode;
+ var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),n,parts=[];
+ while(w.nextNode()){
+  n=w.currentNode;
+  try{
+   if(r.comparePoint(n,0)===1||r.comparePoint(n,n.length)===-1)continue;
+  }catch(e){if(!r.intersectsNode(n))continue;}
+  var a=0,b=n.length;
+  if(n===sc&&sc.nodeType===3)a=so;
+  if(n===ec&&ec.nodeType===3)b=eo;
+  if(b>a&&n.nodeValue.trim())parts.push({node:n,a:a,b:b});
+ }
+ var spans=[];
+ parts.forEach(function(p){
+  var node=p.node;
+  if(p.b<node.length)node.splitText(p.b);
+  if(p.a>0)node=node.splitText(p.a);
+  if(!node.parentNode||!node.nodeValue||!node.nodeValue.trim())return;
+  var sp=document.createElement('span');
+  sp.className='local-fmt';
+  Object.keys(styles).forEach(function(k){sp.style[k]=styles[k];});
+  node.parentNode.insertBefore(sp,node);
+  sp.appendChild(node);
+  spans.push(sp);
+ });
+ return spans;
+}
+function applyLocal(styles){
+ if(!styles||!Object.keys(styles).length)return;
+ if(lastSpans.length&&lastSpans.every(function(sp){return sp.isConnected;})){
+  lastSpans.forEach(function(sp){Object.keys(styles).forEach(function(k){sp.style[k]=styles[k];});});
+ }else{
+  lastSpans=wrapSelection(styles);
+ }
+ if(!lastSpans.length){banner('请先拖选简历中的文字（可只选一个字），再设置格式。');return;}
+ spanLockUntil=Date.now()+2500;
+ setFmtEnabled(true);
+ syncFmtControls();
+ saveNow();refreshFmtPanel();
+}
+txtFont.addEventListener('change',function(){
+ txtCustom.hidden=(txtFont.value!=='__custom__');
+ if(txtFont.value==='__keep__')return;
+ if(txtFont.value==='__custom__'){txtCustom.focus();return;}
+ applyLocal({fontFamily:txtFont.value});
+});
+txtCustom.addEventListener('change',function(){
+ var t=txtCustom.value.trim();if(t)applyLocal({fontFamily:quoteFont(t)});
+});
+txtCustom.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();txtCustom.dispatchEvent(new Event('change'));}});
+txtSize.addEventListener('change',function(){
+ var v=parseFloat(txtSize.value);
+ if(!isNaN(v)&&v>0)applyLocal({fontSize:v+'px'});
+});
+txtSize.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();txtSize.dispatchEvent(new Event('change'));}});
+function toggleFmt(prop,onVal,offVal,active){
+ var st={};st[prop]=active?offVal:onVal;
+ applyLocal(st);
+}
+btnBold.onclick=function(){toggleFmt('fontWeight','bold','normal',btnBold.classList.contains('active'));};
+btnItalic.onclick=function(){toggleFmt('fontStyle','italic','normal',btnItalic.classList.contains('active'));};
+btnUnderline.onclick=function(){toggleFmt('textDecoration','underline','none',btnUnderline.classList.contains('active'));};
+btnClearFmt.onclick=clearLocal;
+document.addEventListener('keydown',function(e){
+ if(e.key==='Escape'){
+  fmtPanel.hidden=true;lastSpans=[];savedRange=null;spanLockUntil=0;resetSelInfo();return;
+ }
+ if((e.ctrlKey||e.metaKey)&&/^[biu]$/i.test(e.key)&&(R.contains(document.activeElement)||fmtBusy())){
+  e.preventDefault();
+  var k=e.key.toLowerCase();
+  if(k==='b')toggleFmt('fontWeight','bold','normal',btnBold.classList.contains('active'));
+  else if(k==='i')toggleFmt('fontStyle','italic','normal',btnItalic.classList.contains('active'));
+  else toggleFmt('textDecoration','underline','none',btnUnderline.classList.contains('active'));
+ }
+});
+function unwrapSpan(sp){
+ var p=sp.parentNode;
+ if(!p)return;
+ while(sp.firstChild)p.insertBefore(sp.firstChild,sp);
+ p.removeChild(sp);
+ try{p.normalize();}catch(e){}
+}
+function clearLocal(){
+ var seen=[],targets=[];
+ function add(sp){
+  if(!sp||!sp.isConnected||seen.indexOf(sp)>=0)return;
+  seen.push(sp);targets.push(sp);
+ }
+ lastSpans.forEach(add);
+ if(savedRange){
+  Array.prototype.forEach.call(R.querySelectorAll('span.local-fmt'),function(sp){
+   try{if(savedRange.intersectsNode(sp))add(sp);}catch(e){}
+  });
+ }
+ if(!targets.length){banner('没有可清除的局部格式：先选中已单独设置过的文字，或在「局部格式」面板里点「清除」。');return;}
+ targets.forEach(unwrapSpan);
+ lastSpans=[];savedRange=null;spanLockUntil=0;
+ try{window.getSelection().removeAllRanges();}catch(e){}
+ resetSelInfo();
+ saveNow();refreshFmtPanel();
+ banner('已清除 '+targets.length+' 处局部格式，恢复跟随全局字体。');
+}
+function fontLabel(sp){
+ return sp.style.fontFamily?sp.style.fontFamily.replace(/["']/g,'').split(',')[0].trim():'默认字体';
+}
+function sizeLabel(sp){return sp.style.fontSize||'默认字号';}
+function extraLabel(sp){
+ var a=[],t=sp.style;
+ if(t.fontWeight==='bold')a.push('粗');
+ if(t.fontWeight==='normal')a.push('去粗');
+ if(t.fontStyle==='italic')a.push('斜');
+ if(t.textDecoration==='underline')a.push('下划线');
+ return a.length?' · '+a.join('/'):'';
+}
+function refreshFmtPanel(){
+ var spans=R.querySelectorAll('span.local-fmt');
+ $('fmtCount').textContent=spans.length;
+ $('fmtBtn').textContent='局部格式 ('+spans.length+')';
+ var list=$('fmtList');list.innerHTML='';
+ if(!spans.length){
+  var d=document.createElement('div');d.className='fp-empty';
+  d.textContent='暂无局部格式。拖选简历中的文字（可只选一个字），在顶部「文字格式」行设置字体、字号与加粗。';
+  list.appendChild(d);return;
+ }
+ Array.prototype.forEach.call(spans,function(sp,i){
+  var row=document.createElement('div');row.className='fp-row';
+  var info=document.createElement('div');info.className='fp-info';
+  info.textContent=(i+1)+'. '+((sp.textContent||'').trim().slice(0,16)||'（空）')+' · '+fontLabel(sp)+' / '+sizeLabel(sp)+extraLabel(sp);
+  info.title=info.textContent;
+  var b1=document.createElement('button');b1.textContent='定位';b1.onclick=function(){locateSpan(sp);};
+  var b2=document.createElement('button');b2.textContent='清除';b2.onclick=function(){unwrapSpan(sp);saveNow();refreshFmtPanel();banner('已清除该处局部格式。');};
+  row.appendChild(info);row.appendChild(b1);row.appendChild(b2);
+  list.appendChild(row);
+ });
+}
+function locateSpan(sp){
+ spanLockUntil=0;
+ sp.scrollIntoView({block:'center'});
+ var r=document.createRange();r.selectNodeContents(sp);
+ var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+ savedRange=r.cloneRange();
+ var ex=exactSpanOf(r);lastSpans=ex?[ex]:[];
+ spanLockUntil=Date.now()+2500;
+ setFmtEnabled(true);syncFmtControls();updateSelInfo(r);
+}
+$('fmtBtn').onclick=function(){fmtPanel.hidden=!fmtPanel.hidden;if(!fmtPanel.hidden)refreshFmtPanel();};
+$('fmtClose').onclick=function(){fmtPanel.hidden=true;};
+refreshFmtPanel();
+
+/* ---------- 模式 / 照片 / 导出 ---------- */
+$('toggleEdit').onclick=function(){
+ editing=!editing;
+ R.setAttribute('contenteditable',String(editing));
+ document.body.classList.toggle('editing',editing);
+ $('toggleEdit').textContent=editing?'预览模式':'返回编辑';
+ bar.hidden=true;current=null;
+ if(!editing){fmtPanel.hidden=true;lastSpans=[];savedRange=null;spanLockUntil=0;resetSelInfo();}
+ banner(editing?'编辑模式：点击任意文字即可修改，拖选文字可单独改字体/字号，悬停模块可增删复制。':'预览模式：A4 单页效果；按 Ctrl+P 或点击「打印 / 存 PDF」导出。');
+};
+$('photoFile').onchange=function(e){
+ var f=e.target.files&&e.target.files[0];if(!f)return;
+ var rd=new FileReader();
+ rd.onload=function(){
+  var img=R.querySelector('.photo');
+  if(img){img.src=rd.result;saveNow();banner('照片已更换，会随导出的 HTML 一起保存（内嵌为图片数据）。');}
+ };
+ rd.readAsDataURL(f);
+};
+function docHTML(mode){
+ var c=document.documentElement.cloneNode(true);
+ var r=c.querySelector('#resume');
+ if(mode==='clean'){
+  Array.prototype.forEach.call(c.querySelectorAll('.editor-ui, script'),function(n){n.remove();});
+  c.querySelector('body').classList.remove('editing');
+  r.setAttribute('contenteditable','false');
+  Array.prototype.forEach.call(c.querySelectorAll('[data-module]'),function(n){
+   n.removeAttribute('data-module');n.removeAttribute('data-label');
+  });
+  var stl=c.ownerDocument.createElement('style');
+  stl.textContent='.page{height:auto!important;min-height:297mm!important;overflow:visible!important}';
+  c.querySelector('head').appendChild(stl);
+ }else{
+  r.setAttribute('contenteditable','true');
+  c.querySelector('body').classList.add('editing');
+  c.querySelector('body').setAttribute('data-snapshot','1');
+  c.querySelector('#modbar').setAttribute('hidden','');
+  c.querySelector('#selInfo').textContent='未选中文字 · 先在简历中拖选（可只选一个字）';
+  c.querySelector('#fmtPanel').setAttribute('hidden','');
+ }
+ return '<!doctype html>\n'+c.outerHTML;
+}
+function download(name,html){
+ var b=new Blob([html],{type:'text/html;charset=utf-8'});
+ var u=URL.createObjectURL(b),a=document.createElement('a');
+ a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();
+ setTimeout(function(){URL.revokeObjectURL(u);},1500);
+}
+function stamp(){
+ var d=new Date();
+ return ''+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate());
+}
+$('downloadEditor').onclick=function(){
+ download('简历修改器_'+stamp()+'.html',docHTML('editor'));
+ banner('已下载可继续编辑的修改器 HTML（含当前内容与排版设置）。');
+};
+$('exportClean').onclick=function(){
+ download('我的简历_'+stamp()+'.html',docHTML('clean'));
+ banner('已导出纯净简历 HTML，可直接打印 / 转 PDF。');
+};
+$('printBtn').onclick=function(){window.print();};
+$('resetBtn').onclick=function(){
+ if(!confirm('恢复到初始示例模板与默认排版？当前未导出的修改会被清除。'))return;
+ try{localStorage.removeItem(KEY);}catch(e){}
+ R.innerHTML=INITIAL;
+ fontSel.value=DEFAULT_FF;fontCustom.value='';fontCustom.hidden=true;headSel.value='';
+ st={fs:1,lh:1,ls:0};
+ $('fs').value=1;$('lh').value=1;$('ls').value=0;
+ apply();banner('已恢复初始示例模板。');
+};
+
+/* ---------- 恢复 ---------- */
+if(document.body.getAttribute('data-snapshot')!=='1'){
+ try{
+  var d=JSON.parse(localStorage.getItem(KEY)||'null');
+  if(d&&d.html){
+   R.innerHTML=d.html;
+   fontSel.value=d.ff||DEFAULT_FF;
+   fontCustom.value=d.fct||'';
+   fontCustom.hidden=(fontSel.value!=='__custom__');
+   headSel.value=d.hf||'';
+   st.fs=d.fs||1;st.lh=d.lh||1;st.ls=d.ls||0;
+   $('fs').value=st.fs;$('lh').value=st.lh;$('ls').value=st.ls;
+   apply();
+   banner('已恢复上次编辑内容'+(d.t?'（'+new Date(d.t).toLocaleString('zh-CN')+'）':'')+'。');
+  }else{apply();}
+ }catch(e){apply();}
+}else{
+ apply();
+}
+})();
+
+</script>
+</body></html>
